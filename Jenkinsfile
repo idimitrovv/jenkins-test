@@ -3,7 +3,9 @@ pipeline {
 	
 	stages {
 		stage('checkout') {
-			echo 'Hello world of Jenkins!' 
+			steps {
+				echo 'Hello world of Jenkins!' 
+			}
 		}
 	}
 }
