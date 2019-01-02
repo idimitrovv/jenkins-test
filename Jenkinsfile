@@ -8,11 +8,9 @@ pipeline {
 				
 				checkout([
 					$class: 'GitSCM',
-					branches: [[name: '*/master']],
-					doGenerateSubmoduleConfigurations: false,
-					extensions: [],
-					submoduleCfg: [],
-					userRemoteConfigs: [[url: 'https://github.com/idimitrovv/jenkins-test']]])
+					branches: scm.branches,
+					extensions: scm.extensions,
+					userRemoteConfigs: scm.userRemoteConfigs])
 
 			}
 		}
