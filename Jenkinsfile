@@ -3,15 +3,14 @@ pipeline {
 	
 	stages {
 		stage('checkout') {
-			steps {
-				echo 'Hello world of Jenkins!'
-				
+			steps {				
 				checkout([
 					$class: 'GitSCM',
 					branches: scm.branches,
 					extensions: scm.extensions,
 					userRemoteConfigs: scm.userRemoteConfigs])
 
+				echo "Retrieved $env.BRANCH_NAME in workspace: $env.WORKSPACE"
 			}
 		}
 	}
