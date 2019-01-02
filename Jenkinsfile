@@ -13,5 +13,11 @@ pipeline {
 				echo "Retrieved $env.BRANCH_NAME in workspace: $env.WORKSPACE"
 			}
 		}
+		
+		stage('build') {
+			steps {
+				bat "\"${tool 'msBuildTest'}\\msbuild.exe\" /t:restore;build /p:Configuration=Release /p:Platform="Any CPU""
+			}
+		}
 	}
 }
