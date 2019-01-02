@@ -4,7 +4,7 @@ pipeline {
 	stages {
 		stage('checkout') {
 			steps {
-				echo 'Hello world of Jenkins!' + scm.userRemoteConfigs
+				echo 'Hello world of Jenkins!'
 				
 				checkout([
 					$class: 'GitSCM',
@@ -12,7 +12,8 @@ pipeline {
 					doGenerateSubmoduleConfigurations: false,
 					extensions: [],
 					submoduleCfg: [],
-					userRemoteConfigs: [[]]])
+					userRemoteConfigs: [[url: 'https://github.com/idimitrovv/jenkins-test']]])
+
 			}
 		}
 	}
