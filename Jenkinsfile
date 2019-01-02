@@ -16,7 +16,7 @@ pipeline {
 		
 		stage('build') {
 			steps {
-				bat "\"${tool 'msBuildTest'}\\msbuild.exe\" /t:restore;build /p:Configuration=Release /p:Platform=\"Any CPU\""
+				bat "\"${tool 'msBuildTest'}\\msbuild.exe\" \"\\SetupCI\\SetupCI.sln\" /t:restore;build /p:Configuration=Release /p:Platform=\"Any CPU\""
 			}
 		}
 	}
