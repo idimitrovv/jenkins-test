@@ -3,3 +3,10 @@
 /SetupCI/.vs
 /SetupCI/bin
 /SetupCI/obj
+/SetupCI/packages
+
+## SetupCI.Test
+
+/SetupCI.Test/.vs
+/SetupCI.Test/bin
+/SetupCI.Test/obj
