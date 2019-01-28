@@ -19,5 +19,11 @@ pipeline {
 				bat "\"${tool 'msBuildTest'}\\msbuild.exe\" \"$env.WORKSPACE\\SetupCI\\SetupCI.sln\" /t:restore;build /p:RestoreSources=\"https://api.nuget.org/v3/index.json\" /p:RestorePackagesPath=\"C:\\TestFolderNugetCache\" /p:Configuration=Release /p:Platform=\"Any CPU\""
 			}
 		}
+		
+		stage('unit tests') {
+			steps {
+				bat "for /f \"delims=\" %%a in ('dir \"$env.WORKSPACE\\SetupCI.Test\" /b /s *.Test.csproj') do dotnet test \"%%a\" --configuration Release --no-build --no-restore --logger \"trx;LogFileName=..\\..\\unit_tests_results\\%%~nxa.trx\""
+			}
+		}
 	}
 }
