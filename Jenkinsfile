@@ -24,6 +24,11 @@ pipeline {
 			steps {
 				bat "for /f \"delims=\" %%a in ('dir \"$env.WORKSPACE\\SetupCI.Test\" /b /s *.Test.csproj') do dotnet test \"%%a\" --configuration Release --no-build --no-restore --logger \"trx;LogFileName=..\\..\\unit_tests_results\\%%~nxa.trx\""
 			}
+			post{
+				always{
+					step([$class: 'MSTestPublisher', testResultsFile:"unit_tests_results\\*.trx", failOnError: true, keepLongStdio: true])
+				}
+			}
 		}
 	}
 }
